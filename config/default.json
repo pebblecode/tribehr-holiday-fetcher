@@ -1,7 +1,10 @@
 {
   "tribehr": {
-    "url": "<yourdomain>.mytribehr.com"
+    "url": "<yourdomain>.mytribehr.com",
     "user": "<username>",
     "pass": "<apikey>"
+  },
+  "api": {
+    "url": ""
   }
 }
