@@ -22,7 +22,7 @@ var job = new CronJob({
    * at 07:00:00 AM and 13:00:00 PM. It does not run on Saturday
    * or Sunday.
    */
-  cronTime: '00 00 7,13 * * 1-5',
+  cronTime: '00 00 10,13 * * 1-5',
   onTick: function () {
     console.log('running');
 
