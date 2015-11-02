@@ -8,5 +8,9 @@
     "moment": "^2.10.2",
     "qs": "^2.4.1",
     "request": "^2.55.0"
+  },
+  "devDependencies": {
+    "chai": "^3.4.0",
+    "mocha": "^2.3.3"
   }
 }
