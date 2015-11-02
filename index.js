@@ -23,7 +23,7 @@ tribe.getApprovedRequest(function(error, data) {
   var events = eventParser(Date.now(), data);
 
   events.forEach(function(event) {
-    apiClient.post(event);
+    apiClient.put(event);
   });
 
   console.log('Completed fetch from tribe');
