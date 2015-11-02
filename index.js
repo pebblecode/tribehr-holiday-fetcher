@@ -1,50 +1,33 @@
-var moment = require('moment');
-var _ = require('lodash');
-var CronJob = require('cron').CronJob;
-
+'use strict';
 var config;
 try {
   config = require('./config/config.json');
-} catch(e) {
+} catch (e) {
   config = {};
 }
 
-var TribeFetcher = require('./lib/tribe-fetcher.js')(config);
-var EventParser = require('./lib/event-parser.js')(config);
-var APIClient = require('./lib/api-client.js')(config);
+var tribe = require('./lib/tribe-fetcher.js')(config);
+var eventParser = require('./lib/event-parser.js')(config);
+var apiClient = require('./lib/api-client.js')(config);
 
 require('./lib/trigger-client.js')(config);
 
-var job = new CronJob({
+console.log('running');
 
-  /*
-   * Runs every weekday (Monday through Friday)
-   * at 07:00:00 AM and 13:00:00 PM. It does not run on Saturday
-   * or Sunday.
-   */
-  cronTime: '00 00 10,13 * * 1-5',
-  onTick: function () {
-    console.log('running');
+tribe.getApprovedRequest(function(error, data) {
+  if (error) {
+    console.log(error);
+    return process.exit(1);
+  }
 
-    TribeFetcher.getApprovedRequest(function(error, data) {
-      if (error) {
-        console.log(error);
-        this.stop();
-        return process.exit(1);
-      }
+  var events = eventParser(Date.now(), data);
 
-      var events = EventParser(Date.now(), data);
+  events.forEach(function(event) {
+    apiClient.post(event);
+  });
 
-      _.each(events, function(event) {
-        APIClient.post(event);
-      });
+  console.log('Completed fetch from tribe');
 
-      console.log(events);
-
-    }.bind(this));
-  },
-  startNow: true,
-  timeZone: 'Europe/London'
+  console.log('Number of Events: ', events.length);
+  process.exit(0);
 });
-
-job.start();

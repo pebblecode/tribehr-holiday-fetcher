@@ -1,9 +1,10 @@
 {
   "name": "tribe-hr-fetcher",
   "version": "0.0.1",
+  "scripts": {
+    "lint": "eslint --ext .js --ext .jsx ./ && echo No linting errors."
+  },
   "dependencies": {
-    "cron": "^1.0.9",
-    "lodash": "^3.8.0",
     "moment": "^2.10.2",
     "qs": "^2.4.1",
     "request": "^2.55.0"
