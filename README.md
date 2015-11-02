@@ -5,6 +5,8 @@ This app integrates with the TribeHR API to fetch their calender API daily.
 
 We use this to check who's on holiday that day, or sick.
 
+![Build](https://api.travis-ci.org/pebblecode/tribehr-holiday-fetcher.svg)
+
 Running
 -------
 
