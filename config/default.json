@@ -5,6 +5,6 @@
     "pass": "<apikey>"
   },
   "api": {
-    "url": ""
+    "url": "<apiurl>"
   }
 }
