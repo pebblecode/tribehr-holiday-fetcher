@@ -1,8 +1,10 @@
 {
   "name": "tribe-hr-fetcher",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "scripts": {
-    "lint": "eslint --ext .js --ext .jsx ./ && echo No linting errors."
+    "lint": "eslint --ext .js --ext .jsx ./ && echo No linting errors.",
+    "test": "node_modules/.bin/mocha",
+    "test:watch": "npm run test --watch"
   },
   "dependencies": {
     "moment": "^2.10.2",
