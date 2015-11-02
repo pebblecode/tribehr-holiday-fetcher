@@ -2,8 +2,6 @@
 var EventParser = require('./../lib/event-parser.js')({});
 var data = require('./data/approved-leave-requests.json');
 var moment = require('moment');
-var config = require('../config/config.json');
-var apiClient = require('../lib/api-client.js')(config);
 
 var expect = require('chai').expect;
 
