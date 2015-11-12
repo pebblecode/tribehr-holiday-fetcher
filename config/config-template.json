@@ -1,0 +1,10 @@
+{
+  "tribehr": {
+    "url": "<YOUR_ACCOUNT>.mytribehr.com",
+    "user": "",
+    "pass": ""
+  },
+  "api": {
+    "url": "http://localhost:3000"
+  }
+}
