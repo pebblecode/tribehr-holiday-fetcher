@@ -1,15 +1,17 @@
 'use strict';
-var EventParser = require('./../lib/event-parser.js')({});
+var eventParser = require('./../lib/event-parser.js')({});
 var data = require('./data/mock-leave-requests.json');
+var temp = require('./data/temp.json');
+
 var moment = require('moment');
 
 var expect = require('chai').expect;
 
-describe('EventParser ', function() {
+describe('eventParser ', function() {
 
   it('should parse to expected structure for 2015-04-30', function() {
 
-    var events = EventParser(moment('2015-04-30'), data);
+    var events = eventParser(moment('2015-04-30'), data);
 
     expect(events).to.deep.equal([
       { email: 'brian@pebblecode.com', status: 'Sick' },
@@ -20,7 +22,7 @@ describe('EventParser ', function() {
 
   it('should parse to expected structure for 2015-11-12', function() {
 
-    var events = EventParser(moment('2015-11-12'), data);
+    var events = eventParser(moment('2015-11-12'), data);
 
     expect(events).to.deep.equal([
       { email: 'jim@pebblecode.com', status: 'Holiday' },
@@ -30,7 +32,7 @@ describe('EventParser ', function() {
 
   it('should parse to expected structure for 2015-11-19', function() {
 
-    var events = EventParser(moment('2015-11-19'), data);
+    var events = eventParser(moment('2015-11-19'), data);
 
     expect(events).to.deep.equal([
       { email: 'brian@pebblecode.com', status: 'Holiday' }
@@ -39,7 +41,7 @@ describe('EventParser ', function() {
 
   it('should parse to expected structure for 2015-11-20', function() {
 
-    var events = EventParser(moment('2015-11-19'), data);
+    var events = eventParser(moment('2015-11-19'), data);
 
     expect(events).to.deep.equal([
       { email: 'brian@pebblecode.com', status: 'Holiday' }
@@ -48,9 +50,10 @@ describe('EventParser ', function() {
 
   it('should not throw exception on empty data', function() {
 
-    var events = EventParser(moment('2015-02-23'), []);
+    var events = eventParser(moment('2015-02-23'), []);
 
     expect(events).to.deep.equal([]);
   });
+
 });
 
