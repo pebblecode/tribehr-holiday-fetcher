@@ -12,7 +12,6 @@ var eventParser = require('./lib/event-parser.js')(config);
 var apiClient = require('./lib/api-client.js')(config);
 var Q = require('q');
 
-var fs = require('fs');
 
 console.log('running');
 
@@ -23,9 +22,6 @@ tribe.getApprovedRequest(function(error, data) {
   }
 
   var events = eventParser(moment(), data);
-  console.log(`events length ${events.length}`);
-
-  fs.writeFileSync('./temp.json', JSON.stringify(data));
 
   events.forEach(function(event) {
     apiClient.put(event)
