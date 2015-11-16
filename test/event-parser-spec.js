@@ -1,7 +1,6 @@
 'use strict';
 var eventParser = require('./../lib/event-parser.js')({});
 var data = require('./data/mock-leave-requests.json');
-var temp = require('./data/temp.json');
 
 var moment = require('moment');
 
